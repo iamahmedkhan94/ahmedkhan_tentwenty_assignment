@@ -43,7 +43,8 @@ Note that odd numbered Node releases such as 23 are not supported by React
 Native 0.86 and can cause confusing build errors.
 
 Xcode with an iOS simulator, for the iOS build.
-CocoaPods, for the iOS native dependencies.
+Ruby with Bundler, for the iOS native dependencies. The Gemfile pins the
+CocoaPods version that this project builds with.
 Android Studio with a JDK, for the Android build.
 
 The app runs on React Native 0.86.2 and React 19.2.3, with the New
@@ -76,9 +77,16 @@ SETUP
    The app uses Poppins. The font files already live in src/assets/fonts, and
    this command registers them with iOS and Android.
 
-4. Install the iOS pods.
+4. Install the Ruby gems, then the iOS pods.
 
-   cd ios && pod install && cd ..
+   bundle install
+   cd ios && bundle exec pod install && cd ..
+
+   The project pins its own version of CocoaPods in the Gemfile, so run
+   bundle install first and then call pod through bundle exec. That way
+   everyone builds with the same CocoaPods version instead of whichever one
+   happens to be installed on the machine. Skip this step if you are only
+   running on Android.
 
 5. Start the bundler.
 
@@ -127,10 +135,21 @@ SCRIPTS
    npx tsc --noEmit   Type check the whole project
 
 
+DEMO
+====
+
+The demo folder holds a screen recording that walks through the whole app,
+covering the movie list, a movie detail page, the trailer player, search, and
+picking seats.
+
+   demo/
+
+
 PROJECT LAYOUT
 ==============
 
    App.tsx                  Sets up the providers and the navigator
+   demo/                    Screen recording of the app
    src/
      assets/                Poppins fonts and the seat icons
      components/            Shared pieces used by more than one feature
@@ -196,7 +215,7 @@ THINGS TO KNOW
    CocoaPods can fail with a message about Unicode normalization when the
    shell has no UTF 8 locale. If that happens, run it like this:
 
-   LANG=en_US.UTF-8 pod install
+   LANG=en_US.UTF-8 bundle exec pod install
 
 5. If Metro cannot find the module @env.
 

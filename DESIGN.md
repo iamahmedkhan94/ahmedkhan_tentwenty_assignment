@@ -14,6 +14,9 @@ The app talks to The Movie Database for all real data. Cinema data such as
 show times and seat availability does not exist in that API, so those parts
 are generated inside the app.
 
+The demo folder in the repository holds a screen recording that walks through
+every screen described below.
+
 ## Goals
 
 1. Match the supplied Figma design as closely as possible.
@@ -295,6 +298,8 @@ The auto close behaviour of the trailer was proved rather than assumed. The
 player was given a short end point so that the video finished after a few
 seconds, and the screen was watched closing itself. The temporary setting was
 then removed.
+
+A recording of a full pass through the app is in the demo folder.
 
 ## Known limits and trade offs
 
