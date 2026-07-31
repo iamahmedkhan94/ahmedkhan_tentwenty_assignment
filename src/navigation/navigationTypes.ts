@@ -9,6 +9,7 @@ export type MainTabParamList = {
 
 export type RootStackParamList = {
   Tabs: NavigatorScreenParams<MainTabParamList>;
+  Search: undefined;
   MovieDetail: { movieId: number; title: string };
   Trailer: { videoKey: string; title: string };
 };

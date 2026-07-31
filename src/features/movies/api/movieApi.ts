@@ -1,6 +1,7 @@
 import { apiClient } from '../../../services/apiClient';
 import { endpoints } from '../../../services/endpoints';
 import {
+  Genre,
   Movie,
   MovieDetail,
   MovieImages,
@@ -16,6 +17,22 @@ export async function fetchUpcomingMovies(
     { params: { page } },
   );
   return data;
+}
+
+export async function searchMovies(
+  query: string,
+  page: number,
+): Promise<PaginatedResponse<Movie>> {
+  const { data } = await apiClient.get<PaginatedResponse<Movie>>(
+    endpoints.searchMovies,
+    { params: { query, page, include_adult: false } },
+  );
+  return data;
+}
+
+export async function fetchGenres(): Promise<Genre[]> {
+  const { data } = await apiClient.get<{ genres: Genre[] }>(endpoints.genres);
+  return data.genres;
 }
 
 export async function fetchMovieDetail(movieId: number): Promise<MovieDetail> {

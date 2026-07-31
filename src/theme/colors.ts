@@ -13,6 +13,7 @@ export const palette = {
 
   caption: '#8F8F8F',
   seatGrey: '#A6A6A6',
+  muted: '#EFEFEF',
   border: '#CECED0',
   placeholder: '#C4C4C4',
 

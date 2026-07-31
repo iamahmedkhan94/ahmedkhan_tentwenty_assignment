@@ -112,6 +112,7 @@ export function MovieListScreen() {
         <Text style={styles.headerTitle}>Watch</Text>
         <TouchableOpacity
           hitSlop={spacing.sm}
+          onPress={() => navigation.navigate('Search')}
           accessibilityRole="button"
           accessibilityLabel="Search movies">
           <SearchIcon />

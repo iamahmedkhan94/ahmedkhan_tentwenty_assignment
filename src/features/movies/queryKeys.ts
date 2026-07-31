@@ -5,4 +5,5 @@ export const movieKeys = {
   detail: (movieId: number) => [...movieKeys.all, 'detail', movieId] as const,
   images: (movieId: number) => [...movieKeys.all, 'images', movieId] as const,
   videos: (movieId: number) => [...movieKeys.all, 'videos', movieId] as const,
+  genres: () => [...movieKeys.all, 'genres'] as const,
 };
