@@ -1,3 +1,11 @@
+export const radius = {
+  screen: 30,
+  card: 10,
+  chip: 10,
+  pill: 25,
+  tabBar: 20,
+} as const;
+
 export const spacing = {
   xs: 4,
   sm: 8,
@@ -7,13 +15,11 @@ export const spacing = {
   xxl: 48,
 } as const;
 
-export const radius = {
-  sm: 4,
-  md: 10,
-  lg: 20,
-  pill: 999,
-} as const;
-
 export const screenPadding = spacing.md;
+
+export const layout = {
+  designWidth: 375,
+  designHeight: 812,
+} as const;
 
 export type Spacing = typeof spacing;

@@ -4,42 +4,49 @@ export const fontFamily = {
   regular: 'Poppins-Regular',
   medium: 'Poppins-Medium',
   semiBold: 'Poppins-SemiBold',
-  bold: 'Poppins-Bold',
-} as const;
-
-export const fontSize = {
-  xs: 12,
-  sm: 14,
-  md: 16,
-  lg: 18,
-  xl: 24,
-  xxl: 32,
 } as const;
 
 export const typography = {
-  h1: {
-    fontFamily: fontFamily.bold,
-    fontSize: fontSize.xxl,
+  display: {
+    fontFamily: fontFamily.medium,
+    fontSize: 74,
+    lineHeight: 100,
   },
-  h2: {
-    fontFamily: fontFamily.semiBold,
-    fontSize: fontSize.xl,
+  title: {
+    fontFamily: fontFamily.medium,
+    fontSize: 16,
+    lineHeight: 20,
   },
-  h3: {
-    fontFamily: fontFamily.semiBold,
-    fontSize: fontSize.lg,
+  label: {
+    fontFamily: fontFamily.medium,
+    fontSize: 12,
+    lineHeight: 15,
   },
-  body: {
-    fontFamily: fontFamily.regular,
-    fontSize: fontSize.md,
+  labelAccent: {
+    fontFamily: fontFamily.medium,
+    fontSize: 12,
+    lineHeight: 15,
+  },
+  meta: {
+    fontFamily: fontFamily.medium,
+    fontSize: 12,
+    lineHeight: 19,
   },
   caption: {
     fontFamily: fontFamily.regular,
-    fontSize: fontSize.sm,
+    fontSize: 12,
+    lineHeight: 19,
   },
-  button: {
+
+  heroTitle: {
     fontFamily: fontFamily.medium,
-    fontSize: fontSize.md,
+    fontSize: 24,
+    lineHeight: 30,
+  },
+  body: {
+    fontFamily: fontFamily.regular,
+    fontSize: 14,
+    lineHeight: 22,
   },
 } as const satisfies Record<string, TextStyle>;
 

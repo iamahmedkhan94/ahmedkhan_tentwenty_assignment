@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.background,
   },
   text: {
-    ...typography.body,
+    ...typography.title,
     color: colors.text.secondary,
   },
 });

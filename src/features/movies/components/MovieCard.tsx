@@ -2,7 +2,14 @@ import React from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { Movie } from '../../../types/tmdb';
 import { backdropSize, buildImageUrl } from '../../../constants/config';
-import { colors, radius, spacing, typography } from '../../../theme';
+import {
+  colors,
+  gradients,
+  palette,
+  radius,
+  spacing,
+  typography,
+} from '../../../theme';
 
 type Props = {
   movie: Movie;
@@ -39,9 +46,10 @@ export const MovieCard = React.memo(MovieCardComponent);
 
 const styles = StyleSheet.create({
   card: {
+    // (derived) card height is not an extracted value.
     height: 180,
     marginBottom: spacing.lg,
-    borderRadius: radius.md,
+    borderRadius: radius.card,
     overflow: 'hidden',
     backgroundColor: colors.surface,
   },
@@ -51,15 +59,14 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   imageFallback: {
-    backgroundColor: colors.border,
+    backgroundColor: palette.placeholder,
   },
   scrim: {
     ...StyleSheet.absoluteFill,
-    experimental_backgroundImage:
-      'linear-gradient(to bottom, rgba(0,0,0,0) 40%, rgba(0,0,0,0.65) 100%)',
+    experimental_backgroundImage: gradients.scrimBottom,
   },
   title: {
-    ...typography.h3,
+    ...typography.title,
     position: 'absolute',
     left: spacing.md,
     right: spacing.md,

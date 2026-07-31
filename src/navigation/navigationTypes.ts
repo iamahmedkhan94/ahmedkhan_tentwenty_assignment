@@ -9,6 +9,8 @@ export type MainTabParamList = {
 
 export type RootStackParamList = {
   Tabs: NavigatorScreenParams<MainTabParamList>;
+  MovieDetail: { movieId: number; title: string };
+  Trailer: { videoKey: string; title: string };
 };
 
 declare global {

@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
     padding: spacing.xl,
   },
   message: {
-    ...typography.body,
+    ...typography.title,
     color: colors.text.secondary,
     textAlign: 'center',
   },
@@ -58,11 +58,12 @@ const styles = StyleSheet.create({
     marginTop: spacing.lg,
     paddingVertical: spacing.sm,
     paddingHorizontal: spacing.lg,
-    borderRadius: radius.md,
+    // Matches the design's pill CTAs.
+    borderRadius: radius.pill,
     backgroundColor: colors.primary,
   },
   buttonLabel: {
-    ...typography.button,
+    ...typography.title,
     color: colors.text.inverse,
   },
 });

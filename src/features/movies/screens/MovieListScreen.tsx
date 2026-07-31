@@ -9,16 +9,27 @@ import {
   View,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useNavigation } from '@react-navigation/native';
+import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../../../navigation/navigationTypes';
 import { Movie } from '../../../types/tmdb';
 import { ApiError } from '../../../services/apiClient';
 import { useUpcomingMovies } from '../hooks/useUpcomingMovies';
 import { MovieCard } from '../components/MovieCard';
 import { EmptyView, ErrorView, LoadingView } from '../../../components/StateView';
 import { SearchIcon } from '../../../components/icons/SearchIcon';
-import { colors, screenPadding, spacing, typography } from '../../../theme';
+import {
+  colors,
+  screenPadding,
+  spacing,
+  typography,
+} from '../../../theme';
+
+type Navigation = NativeStackNavigationProp<RootStackParamList>;
 
 export function MovieListScreen() {
   const insets = useSafeAreaInsets();
+  const navigation = useNavigation<Navigation>();
   const {
     movies,
     error,
@@ -31,9 +42,21 @@ export function MovieListScreen() {
     isFetchingNextPage,
   } = useUpcomingMovies();
 
+  const openMovie = useCallback(
+    (movie: Movie) => {
+      navigation.navigate('MovieDetail', {
+        movieId: movie.id,
+        title: movie.title,
+      });
+    },
+    [navigation],
+  );
+
   const renderItem = useCallback(
-    ({ item }: ListRenderItemInfo<Movie>) => <MovieCard movie={item} />,
-    [],
+    ({ item }: ListRenderItemInfo<Movie>) => (
+      <MovieCard movie={item} onPress={openMovie} />
+    ),
+    [openMovie],
   );
 
   const handleEndReached = useCallback(() => {
@@ -64,6 +87,7 @@ export function MovieListScreen() {
         data={movies}
         keyExtractor={item => String(item.id)}
         renderItem={renderItem}
+        style={styles.list}
         contentContainerStyle={styles.listContent}
         showsVerticalScrollIndicator={false}
         onRefresh={refetch}
@@ -101,7 +125,8 @@ export function MovieListScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.background,
+    // White so the status bar area reads as part of the header.
+    backgroundColor: colors.surface,
   },
   header: {
     flexDirection: 'row',
@@ -109,12 +134,16 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingHorizontal: screenPadding,
     paddingVertical: spacing.md,
+    backgroundColor: colors.surface,
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderBottomColor: colors.border,
   },
   headerTitle: {
-    ...typography.h1,
+    ...typography.title,
     color: colors.text.primary,
+  },
+  list: {
+    backgroundColor: colors.background,
   },
   listContent: {
     padding: screenPadding,
