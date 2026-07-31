@@ -37,10 +37,10 @@ export const colors = {
   },
 
   seat: {
-    available: palette.seatGrey,
-    selected: palette.gold,
-    reserved: palette.divider,
+    regular: palette.blue,
     vip: palette.purple,
+    selected: palette.gold,
+    unavailable: palette.seatGrey,
   },
 
   overlay: {

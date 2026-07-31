@@ -12,6 +12,13 @@ export type RootStackParamList = {
   Search: undefined;
   MovieDetail: { movieId: number; title: string };
   Trailer: { videoKey: string; title: string };
+  Showtimes: { movieId: number; title: string; releaseDate?: string };
+  SeatSelection: {
+    title: string;
+    date: string;
+    time: string;
+    hall: string;
+  };
 };
 
 declare global {

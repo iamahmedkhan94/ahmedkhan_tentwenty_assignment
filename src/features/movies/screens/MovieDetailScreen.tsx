@@ -99,7 +99,17 @@ export function MovieDetailScreen() {
             <Text style={styles.inTheaters}>{inTheaters}</Text>
           ) : null}
 
-          <PillButton label="Get Tickets" style={styles.cta} />
+          <PillButton
+            label="Get Tickets"
+            style={styles.cta}
+            onPress={() =>
+              navigation.navigate('Showtimes', {
+                movieId: movie.id,
+                title: movie.title,
+                releaseDate: movie.release_date,
+              })
+            }
+          />
           <PillButton
             label="Watch Trailer"
             variant="outlined"
